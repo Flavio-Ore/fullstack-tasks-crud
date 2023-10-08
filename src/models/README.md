@@ -8,6 +8,24 @@ If it does not comply with the data previously defined, it _will return an error
 
 Note: **In oher words we'll create schemas.**
 
+## Files 📁📂
+
+`models/`: Especifies the data models (data types) for our application that we're going to store in our database. Create a fixed structure as tables for MongoDB.
+
+```js
+const userSchema = mongoose.Schema({
+  username: { type: String, required: true, trim: true },
+  email: { type: String, required: true, trim: true, unique: true },
+  password: { type: String, required: true }
+})
+
+export default mongoose.model('User', userSchema)
+```
+
+When the schema is created, it's a kind of object that we're going to validate, but it is not stored in the database. We need to **create a model from the schema to QUERY the database** using specific methods.
+
+> Mongoose create a set of users called `'User'`.
+
 ## TL;DR
 
 A model is a **representation** of a data structure that is used to interact with a database or other data source. 🗄️
