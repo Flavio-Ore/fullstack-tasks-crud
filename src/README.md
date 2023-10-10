@@ -2,15 +2,21 @@
 
 Exploring the world of NodeJS and MongoDB.
 
-## Files 📁📂
+## FILES 📁📂
 
-`config.js`: Create configuration that the rest of the files can use.
+### `config.js`: Create configuration that the rest of the files can use
 
-`app.js`: Create the server and the routes.
+### `app.js`: Create the server and the routes
 
-`db.js`: To be the DATABASE, the conexion to the database.
+### `db.js`: To be the DATABASE, the conexion to the database
 
-`index.js`: Start the application.
+When a user is altered, Mongo DB create a `_id`, `updatedAt` and `createdAt` fields.
+
+### `index.js`: Start the application
+
+## EXTENSIONS 🧩
+
+Thunder Client: To test the API.
 
 ## PACKAGES 📦
 
