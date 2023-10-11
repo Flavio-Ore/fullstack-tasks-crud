@@ -2,6 +2,42 @@
 
 - Generate tokens
 
+## Files 📁📂
+
+### `jwt.js`: Contains the `createAccesToken()` function
+
+The payload param is the data that we want to store in the token.
+
+```js
+import jwt from 'jsonwebtoken'
+
+jwt.sign(
+  payload,
+  process.env.JWT_SECRET_KEY,
+  { expiresIn: 'x time' },
+  (err, token) => {
+    if (err) reject(err)
+    resolve(token)
+  }
+)
+```
+
+#### `payload`
+
+The payload param is the data that we want to store in the token.
+
+#### `process.env.JWT_SECRET_KEY`
+
+The secret key is used to save the content and get it back.
+
+#### `{ options }`
+
+The options param is used to specify the expiration time of the token.
+
+#### Callback: `(err, token) => { }`
+
+The callback function is used to handle the token or the error.
+
 ## TL;DR
 
 A library (or "lib" for short) is a collection of pre-written code that can be used to perform common tasks or add functionality to an application. 🛠️
