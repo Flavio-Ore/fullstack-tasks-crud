@@ -4,6 +4,14 @@ Create functions that will be used by the routes to handle the requests and resp
 
 _When the url's visited, the controller functions will be called._
 
+A controller is a function that is **responsible for handling requests and responses** between the frontend and backend. 🕸️ Controllers are typically **used in conjunction with routes**, which define the URLs that the frontend can use to interact with the backend.
+
+When a client makes a request to a particular URL, the corresponding **controller function is called to handle the request and generate a response**.📡
+
+Controller functions can perform a wide range of tasks, such as _retrieving data from a database, processing user input, and generating `HTML` or `JSON` responses_.
+
+By encapsulating these tasks in separate controller functions, developers can create more **modular and maintainable code**. 🧩
+
 ## JSON Request Body 📡
 
 Express has a built-in `express.json()` function that returns an `Express` middleware function that parses `JSON` `HTTP` request bodies into `JavaScript` objects.
@@ -73,17 +81,11 @@ However some of these algorithms are not secure anymore, because they are vulner
 
 ### Brute Force Attack 🤖
 
-A brute force attack is a _trial-and-error_ method used to obtain information, such as a user password or personal identification number (PIN).
-
-In a brute force attack, automated software is used to generate a large number of consecutive _guesses_ as to the value of the desired data.
-
-Brute force attacks may be used by criminals to **crack encrypted data**, or by **security analysts** to test an organization's network security. 🔓
+A brute force attack is a _trial-and-error_ method used to obtain information, such as a user password or personal identification number (PIN). In a brute force attack, automated software is used to generate a large number of consecutive _guesses_ as to the value of the desired data. Brute force attacks may be used by criminals to **crack encrypted data**, or by **security analysts** to test an organization's network security. 🔓
 
 ### Rainbow Table Attack 🌈
 
-A rainbow table is a precomputed table of hash values for every possible combination of characters.
-
-_By comparing the hash of a password_ to the values in the rainbow table, it is possible to **determine** the original password ❗.
+A rainbow table is a precomputed table of hash values for every possible combination of characters. _By comparing the hash of a password_ to the values in the rainbow table, it is possible to **determine** the original password ❗.
 
 **[To see more about rainbow table attack](https://www.beyondidentity.com/glossary/rainbow-table-attack)**
 
@@ -121,11 +123,9 @@ res.cookie('token', token, {
 })
 ```
 
-httpOnly is a flag that can be included in a `Set-Cookie` header.
+`httpOnly` is a flag that can be included in a `Set-Cookie` header.
 
-The presence of this flag tells the browser that the cookie **should not** be accessible via **client-side script**.
-
-This measure is taken to prevent cross-site scripting (XSS) attacks.
+The presence of this flag tells the browser that the cookie **should not** be accessible via **client-side script**. This measure is taken to **prevent** cross-site scripting (XSS) attacks.
 
 #### Accessing a token
 
@@ -139,11 +139,7 @@ The claims in a `JWT` are **encoded** as a `JSON` object that is used as the **p
 
 ### Why it is necessary to store the token in a cookie?
 
-Because the cookie is a **httpOnly** cookie, it is not accessible by **JavaScript** running in the browser.
-
-This means that a malicious script cannot read or tamper with the contents of the cookie.
-
-The cookie is automatically sent by the browser to the server whenever a request is made to the server for the domain that the cookie belongs to.
+Because the cookie is a **httpOnly** cookie, it is not accessible by **JavaScript** running in the browser. This means that a malicious script cannot read or tamper with the contents of the cookie. The cookie is automatically sent by the browser to the server whenever a request is made to the server for the domain that the cookie belongs to.
 
 ## Cookies 🍪
 
@@ -153,18 +149,6 @@ Cookies are small pieces of data that are stored on the client's computer by a w
 const token = await createAccesToken({ id: userSaved._id })
 res.cookie('token', token)
 ```
-
-## TL;DR
-
-A controller is a function that is **responsible for handling requests and responses** between the frontend and backend. 🕸️
-
-Controllers are typically **used in conjunction with routes**, which define the URLs that the frontend can use to interact with the backend.
-
-When a client makes a request to a particular URL, the corresponding **controller function is called to handle the request and generate a response**.📡
-
-Controller functions can perform a wide range of tasks, such as _retrieving data from a database, processing user input, and generating `HTML` or `JSON` responses_.
-
-By encapsulating these tasks in separate controller functions, developers can create more **modular and maintainable code**. 🧩
 
 ## Files 📁📂
 
