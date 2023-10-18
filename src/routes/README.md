@@ -27,15 +27,11 @@ URLs that are the same as the frontend but with a `/api/` prefix. This is a **co
 
 A route that protect other routes. 🤝
 
-> For example our `/profile` endpoint.
-
-```js
-router.get('/profile', authRequired, profile)
-```
+> For example all the routes that start with `/api/tasks` are protected by the `/api/login` route.
 
 ## Files 📁📂
 
-`auth.routes.js`: Contains the routes for the authentication endpoints.
+`*.routes.js`: Contains the routes for the authentication endpoints.
 
 ```js
 const router = Router()
@@ -47,7 +43,21 @@ We can now create multiple routes.
 
 All the paths are relative to the root of the project and start with `/api/`
 
+### Users 🧑
+
 | Method | Path        | Description            |
 | ------ | ----------- | ---------------------- |
 | `POST` | `/register` | Register a new user    |
 | `POST` | `/login`    | Login an existing user |
+| `GET`  | `/profile`  | Get the user profile   |
+| `POST` | `/logout`   | Logout the user        |
+
+### Tasks 📝
+
+| Method   | Path         | Description          |
+| -------- | ------------ | -------------------- |
+| `GET`    | `/tasks`     | Get all the tasks    |
+| `GET`    | `/tasks/:id` | Get a single task    |
+| `POST`   | `/tasks`     | Create a new task    |
+| `DELETE` | `/tasks/:id` | Delete a single task |
+| `PUT`    | `/tasks/:id` | Update a single task |

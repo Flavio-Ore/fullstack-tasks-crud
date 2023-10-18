@@ -1,11 +1,8 @@
 import cookieParser from 'cookie-parser'
 import express from 'express'
 import morgan from 'morgan'
-import {
-  default as authRoutes,
-  default as taskRoutes
-} from './routes/auth.routes.js'
-
+import authRoutes from './routes/auth.routes.js'
+import tasksRoutes from './routes/tasks.routes.js'
 const app = express()
 
 // middlewares
@@ -14,6 +11,6 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use('/api', authRoutes)
-app.use('/api', taskRoutes)
+app.use('/api', tasksRoutes)
 
 export default app

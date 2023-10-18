@@ -19,6 +19,7 @@ When a user is altered, Mongo DB create a `_id`, `updatedAt` and `createdAt` fie
 ## EXTENSIONS 🧩
 
 - Thunder Client: To test the API.
+- Markdown Mermaid: To create diagrams.
 
 ## PACKAGES 📦
 

@@ -20,7 +20,31 @@ Models can also be used to **define relationships** between different types of d
 
 ## Files 📁📂
 
+### Models
+
 `models/`: Especifies the data models (data types) for our application that we're going to store in our database. Create a fixed structure as tables for MongoDB.
+
+#### Entity Relationship Diagram (ERD)
+
+```mermaid
+erDiagram
+    USER ||--o{ TASK : "has"
+    USER {
+        ObjectId userId PK
+        string username
+        string email
+        string password
+    }
+    TASK {
+        ObjectId taskId PK
+        ObjectId user FK
+        string title
+        string description
+        date date
+    }
+```
+
+#### User
 
 ```js
 const userSchema = mongoose.Schema({
@@ -28,10 +52,26 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true, trim: true, unique: true },
   password: { type: String, required: true }
 })
+```
 
-export default mongoose.model('User', userSchema)
+### Task
+
+```js
+const taskSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    date: { type: Date, default: Date.now }
+  },
+  {
+    timestamps: true
+  }
+)
 ```
 
 When the schema is created, it's a kind of object that we're going to validate, but it is not stored in the database. We need to **create a model from the schema to QUERY the database** using specific methods.
-
-> Mongoose create a set of users called `'User'`.

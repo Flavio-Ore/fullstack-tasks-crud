@@ -164,8 +164,10 @@ res.cookie('token', token)
 
 These files gonna be used by the routes to handle the requests and responses to the frontend.
 
-### `auth.controller.js`: Contains the functions that will be used by the routes to handle the requests and responses to the frontend
+### `auth.controller.js`
 
-```js
+Manage the authentication and creation of the users.
 
-```
+### `task.controller.js`
+
+CRUD for tasks.
