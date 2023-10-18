@@ -6,6 +6,14 @@
 
 ### `jwt.js`: Contains the `createAccesToken()` function
 
+#### JWT Signature: `jwt.sign(payload, secretOrPrivateKey, [options, callback])`
+
+The `jwt.sign()` method has the `secretOrPrivateKey` parameter, which is used to sign the token. 🔒
+
+In order to encrypt and decrypt what is inside, the same key must be used. 🔑🔓
+
+It behaves like a password, to save and get the information.
+
 The payload param is the data that we want to store in the token.
 
 ```js

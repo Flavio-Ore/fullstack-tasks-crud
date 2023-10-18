@@ -11,3 +11,56 @@ Middlewares can also be used to **modify the response data**, such as by _adding
 Overall, middlewares are a powerful tool for developers to add functionality to their applications in a **modular and reusable way.**
 
 By breaking down complex functionality into smaller, composable pieces, developers can create more **maintainable and scalable applications**. 🚀
+
+## next()
+
+The `next()` function is used to **pass control to the next middleware function** in the stack.
+
+> _The `next()` function is not a part of the Node.js or Express.js APIs, but is instead provided by the middleware function itself._
+
+## Fetching the token from the request trough cookies 🍪
+
+Instead of `req.headers.cookies` we will work with `req.cookies` to get the token.
+
+```js
+// ❌
+const token = req.headers.cookie.split('=')[1]
+```
+
+We are using the `cookie-parser` middleware. Thus, we can access the cookies directly instead of splitting the string to get the token value. 🔑
+
+```js
+// ✔
+const { token } = req.cookies
+```
+
+## Verifying a token
+
+We will use the `jwt.verify()` function to verify the token.
+
+```js
+jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+  if (err)
+    return res.status(403).json({ message: 'Forbidden, invalid token' })
+  // If the token is valid, we will get the decoded payload
+  req.user = decoded //decoded = user
+})
+```
+
+As you can notice, we save the user in the `req` object. This will be useful in the next middleware. 🧵
+
+## Files 📁📂
+
+`validateToken.js`: Contains the middleware that protects the routes that require authentication.
+
+```js
+  const { token } = req.cookies
+
+  if (!token) return res.status(401).json({ message: 'Unauthorized' })
+
+  jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+    if (err)
+      return res.status(403).json({ message: 'Forbidden, invalid token' })
+    req.user = decoded
+  })
+```

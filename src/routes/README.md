@@ -19,6 +19,20 @@ Routes are defined by the backend application and **specify the actions that sho
 
 URLs that are the same as the frontend but with a `/api/` prefix. This is a **common convention** in web development, where the frontend and backend are separated into different applications or services, and the `/api/` prefix is used to distinguish between URLs that are handled by the backend API and those that are handled by the frontend application. 🤝
 
+## Protecting Routes
+
+**Some routes may require authentication** to ensure that only authorized users can access them. 🛡️
+
+> _For example, a route that is used to retrieve user data should only be accessible to authenticated users, and a route that is used to modify user data should only be accessible to authenticated users who are authorized to modify that data. 🔐_
+
+A route that protect other routes. 🤝
+
+> For example our `/profile` endpoint.
+
+```js
+router.get('/profile', authRequired, profile)
+```
+
 ## Files 📁📂
 
 `auth.routes.js`: Contains the routes for the authentication endpoints.
