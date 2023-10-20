@@ -1,16 +1,22 @@
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 import express from 'express'
 import morgan from 'morgan'
 import authRoutes from './routes/auth.routes.js'
 import tasksRoutes from './routes/tasks.routes.js'
-const app = express()
 
-// middlewares
-app.use(morgan('dev'))
-app.use(express.json())
-app.use(cookieParser())
+export const app = express()
+export const appSetup = () => {
+  // using middlewares
+  app.use(
+    cors({
+      origin: `http://localhost:${process.env.FRONTEND_PORT}`
+    })
+  )
+  app.use(morgan('dev'))
+  app.use(express.json())
+  app.use(cookieParser())
 
-app.use('/api', authRoutes)
-app.use('/api', tasksRoutes)
-
-export default app
+  app.use('/api', authRoutes)
+  app.use('/api', tasksRoutes)
+}
