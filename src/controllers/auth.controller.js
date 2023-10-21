@@ -6,9 +6,21 @@ export const register = async (req, res) => {
   const { username, email, password } = req.body
 
   if (!username || !email || !password)
-    return res.status(400).json({ message: 'Please fill all fields' })
+    return res.status(400).json(['Please fill all fields'])
 
   try {
+    const [usernameFound, emailFound] = await Promise.all([
+      User.findOne({ username }),
+      User.findOne({ email })
+    ])
+    if (usernameFound && emailFound)
+      return res
+        .status(400)
+        .json(['Email already exists', 'Username already exists'])
+
+    if (usernameFound) return res.status(400).json(['Username already exists'])
+    if (emailFound) return res.status(400).json(['Email already exists'])
+
     const salt = await bcrypt.genSalt(5)
     const passwordHash = await bcrypt.hash(password, salt)
 
@@ -27,7 +39,7 @@ export const register = async (req, res) => {
     })
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: error.message || 'Something went wrong' })
+    res.status(500).json([error.message || 'Something went wrong'])
   }
 }
 export const login = async (req, res) => {
