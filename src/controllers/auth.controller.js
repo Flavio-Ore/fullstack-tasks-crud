@@ -6,7 +6,7 @@ export const register = async (req, res) => {
   const { username, email, password } = req.body
 
   if (!username || !email || !password)
-    return res.status(400).json(['Please fill all fields'])
+    return res.status(400).json({ errors: ['Please fill all fields'] })
 
   try {
     const [usernameFound, emailFound] = await Promise.all([
@@ -16,10 +16,12 @@ export const register = async (req, res) => {
     if (usernameFound && emailFound)
       return res
         .status(400)
-        .json(['Email already exists', 'Username already exists'])
+        .json({ errors: ['Email already exists', 'Username already exists'] })
 
-    if (usernameFound) return res.status(400).json(['Username already exists'])
-    if (emailFound) return res.status(400).json(['Email already exists'])
+    if (usernameFound)
+      return res.status(400).json({ errors: ['Username already exists'] })
+    if (emailFound)
+      return res.status(400).json({ errors: ['Email already exists'] })
 
     const salt = await bcrypt.genSalt(5)
     const passwordHash = await bcrypt.hash(password, salt)
@@ -39,7 +41,7 @@ export const register = async (req, res) => {
     })
   } catch (error) {
     console.log(error)
-    res.status(500).json([error.message || 'Something went wrong'])
+    res.status(500).json({ message: error.message || 'Something went wrong' })
   }
 }
 export const login = async (req, res) => {
@@ -47,11 +49,10 @@ export const login = async (req, res) => {
 
   try {
     const userFound = await User.findOne({ email })
-    if (!userFound) return res.status(400).json({ message: 'User not found' })
+    if (!userFound) return res.status(400).json({ errors: 'User not found' })
 
     const isMatch = await bcrypt.compare(password, userFound.password)
-    if (!isMatch)
-      return res.status(400).json({ message: 'Invalid credentials' })
+    if (!isMatch) return res.status(400).json({ errors: 'Invalid credentials' })
 
     const token = await createAccessToken({ id: userFound._id })
 
@@ -81,7 +82,7 @@ export const logout = async (req, res) => {
 export const profile = async (req, res) => {
   const userFound = await User.findById(req.user.id)
 
-  if (!userFound) return res.status(400).json({ message: 'User not found' })
+  if (!userFound) return res.status(400).json({ errors: 'User not found' })
 
   return res.json({
     id: userFound._id,

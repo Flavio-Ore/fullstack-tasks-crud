@@ -10,6 +10,7 @@ export const useAuth = () => {
     user: context.user,
     isAuthenticated: context.isAuthenticated,
     signup: context.signup,
+    signin: context.signin,
     errors: context.errors
   }
 }
