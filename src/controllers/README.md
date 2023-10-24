@@ -144,9 +144,7 @@ The claims in a `JWT` are **encoded** as a `JSON` object that is used as the **p
 
 ### Why it is necessary to store the token in a cookie?
 
-Because the cookie is a **httpOnly** cookie, it is not accessible by **JavaScript** running in the browser.
-
-This means that a malicious script cannot read or tamper with the contents of the cookie. The cookie is automatically sent by the browser to the server whenever a request is made to the server for the domain that the cookie belongs to.
+Because the cookie is a **httpOnly** cookie, it is not accessible by **JavaScript** running in the browser. This means that a malicious script cannot read or tamper with the contents of the cookie. The cookie is automatically sent by the browser to the server whenever a request is made to the server for the domain that the cookie belongs to. This precaution helps mitigate cross-site scripting ([XSS](https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks#cross-site_scripting_(xss))) attacks.
 
 ## Cookies 🍪
 

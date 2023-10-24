@@ -39,7 +39,7 @@ const { token } = req.cookies
 We will use the `jwt.verify()` function to verify the token.
 
 ```js
-jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+jwt.verify(token, JWT_SECRET_KEY, (err, decoded) => {
   if (err)
     return res.status(403).json({ message: 'Forbidden, invalid token' })
   // If the token is valid, we will get the decoded payload

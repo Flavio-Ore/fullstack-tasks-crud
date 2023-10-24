@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 const RegisterPage = () => {
@@ -23,11 +23,17 @@ const RegisterPage = () => {
 
   return (
     <div className='bg-zinc-800 m ax-w-md p-10 rounded-md'>
-      {authErrors.map(error => (
-        <div key={error} className='bg-red-400 text-white p-4 rounded-md mb-2'>
-          {error}
-        </div>
-      ))}
+      {authErrors.map(error => {
+        console.log('error :>> ', error)
+        return (
+          <div
+            key={error}
+            className='bg-red-500 text-white p-4 rounded-md mb-2 text-center'
+          >
+            {error}
+          </div>
+        )
+      })}
       <form onSubmit={onSubmit}>
         <input
           type='text'
@@ -64,6 +70,12 @@ const RegisterPage = () => {
         )}
         <button type='submit'>Register</button>
       </form>
+      <p className='flex gap-x-2 justify-between mt-4'>
+        Do you already have an account?{' '}
+        <Link to='/login' className='text-sky-500'>
+          Log in here
+        </Link>
+      </p>
     </div>
   )
 }

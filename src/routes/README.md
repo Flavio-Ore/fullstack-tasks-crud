@@ -45,12 +45,13 @@ All the paths are relative to the root of the project and start with `/api/`
 
 ### Users 🧑
 
-| Method | Path        | Description            |
-| ------ | ----------- | ---------------------- |
-| `POST` | `/register` | Register a new user    |
-| `POST` | `/login`    | Login an existing user |
-| `GET`  | `/profile`  | Get the user profile   |
-| `POST` | `/logout`   | Logout the user        |
+| Method | Path        | Description                                    |
+| ------ | ----------- | ---------------------------------------------- |
+| `POST` | `/register` | Register a new user                            |
+| `POST` | `/login`    | Login an existing user                         |
+| `GET`  | `/profile`  | Get the user profile                           |
+| `GET`  | `/verify`   | Verifies if the user complies with credentials |
+| `POST` | `/logout`   | Logout the user                                |
 
 ### Tasks 📝
 

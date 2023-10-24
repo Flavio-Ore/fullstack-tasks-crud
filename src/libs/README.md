@@ -21,7 +21,7 @@ import jwt from 'jsonwebtoken'
 
 jwt.sign(
   payload,
-  process.env.JWT_SECRET_KEY,
+  JWT_SECRET_KEY,
   { expiresIn: 'x time' },
   (err, token) => {
     if (err) reject(err)
@@ -34,7 +34,7 @@ jwt.sign(
 
 The payload param is the data that we want to store in the token.
 
-#### `process.env.JWT_SECRET_KEY`
+#### `JWT_SECRET_KEY`
 
 The secret key is used to save the content and get it back.
 

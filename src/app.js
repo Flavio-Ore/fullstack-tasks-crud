@@ -10,7 +10,8 @@ export const appSetup = () => {
   // using middlewares
   app.use(
     cors({
-      origin: `http://localhost:${process.env.FRONTEND_PORT}`
+      origin: `http://localhost:${process.env.FRONTEND_PORT}`,
+      credentials: true
     })
   )
   app.use(morgan('dev'))
