@@ -2,7 +2,12 @@ import Task from '../models/task.model.js'
 
 export const createTask = async (req, res) => {
   const { title, description, date } = req.body
-
+  console.log('req.body :>> ', {
+    title,
+    description,
+    date,
+    userId: req.user.id
+  })
   const newTask = new Task({
     title,
     description,
@@ -14,6 +19,7 @@ export const createTask = async (req, res) => {
 }
 
 export const getTasks = async (req, res) => {
+  console.log('req.user :>> ', req.user)
   const tasks = await Task.find({
     user: req.user.id
   }).populate('user')

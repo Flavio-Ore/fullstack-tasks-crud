@@ -23,17 +23,14 @@ const RegisterPage = () => {
 
   return (
     <div className='bg-zinc-800 m ax-w-md p-10 rounded-md'>
-      {authErrors.map(error => {
-        console.log('error :>> ', error)
-        return (
-          <div
-            key={error}
-            className='bg-red-500 text-white p-4 rounded-md mb-2 text-center'
-          >
-            {error}
-          </div>
-        )
-      })}
+      {authErrors.map(error => (
+        <div
+          key={error}
+          className='bg-red-500 text-white p-4 rounded-md mb-2 text-center'
+        >
+          {error}
+        </div>
+      ))}
       <form onSubmit={onSubmit}>
         <input
           type='text'

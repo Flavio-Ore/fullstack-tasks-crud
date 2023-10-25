@@ -1,5 +1,6 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 const LoginPage = () => {
@@ -9,12 +10,16 @@ const LoginPage = () => {
     formState: { errors }
   } = useForm()
 
-  const { signin, errors: loginErrors } = useAuth()
-
+  const { isAuthenticated, signin, errors: loginErrors } = useAuth()
+  const navigate = useNavigate()
   const onSubmit = handleSubmit(async values => {
     signin(values)
     console.log(values)
   })
+
+  useEffect(() => {
+    if (isAuthenticated) navigate('/tasks')
+  }, [isAuthenticated])
 
   return (
     <div className='flex h-[calc(100vh-100px)] items-center justify-center'>
