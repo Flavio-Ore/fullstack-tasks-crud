@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute'
+import NavBar from './components/NavBar'
 import { AuthProvider } from './contexts/AuthContext'
 import { TaskProvider } from './contexts/TasksContext'
 import HomePage from './pages/HomePage'
@@ -14,17 +15,20 @@ const App = () => {
     <AuthProvider>
       <TaskProvider>
         <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path='/tasks' element={<TasksPage />} />
-              <Route path='/add-task' element={<TaskFormPage />} />
-              <Route path='/tasks/:id' element={<TaskFormPage />} />
-              <Route path='/profile' element={<ProfilePage />} />
-            </Route>
-          </Routes>
+          <main className='container mx-auto px-10'>
+            <NavBar />
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/login' element={<LoginPage />} />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path='/tasks' element={<TasksPage />} />
+                <Route path='/add-task' element={<TaskFormPage />} />
+                <Route path='/tasks/:id' element={<TaskFormPage />} />
+                <Route path='/profile' element={<ProfilePage />} />
+              </Route>
+            </Routes>
+          </main>
         </BrowserRouter>
       </TaskProvider>
     </AuthProvider>

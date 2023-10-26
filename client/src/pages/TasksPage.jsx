@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import TaskCard from '../components/TaskCard'
 import { useTasks } from '../hooks/useTasks'
 
 const TasksPage = () => {
@@ -13,10 +14,7 @@ const TasksPage = () => {
   return (
     <div>
       {tasks.map(task => (
-        <div key={task._id}>
-          <h2>{task.title}</h2>
-          <p>{task.description}</p>
-        </div>
+        <TaskCard key={task._id} {...task} />
       ))}
     </div>
   )

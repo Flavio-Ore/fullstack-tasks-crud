@@ -9,6 +9,9 @@ export const useTasks = () => {
   return {
     tasks: context.tasks,
     createTask: context.createTask,
-    getTasks: context.getTasks
+    getTasks: context.getTasks,
+    getTask: context.getTask,
+    deleteTask: context.deleteTask,
+    updateTask: context.updateTask
   }
 }
