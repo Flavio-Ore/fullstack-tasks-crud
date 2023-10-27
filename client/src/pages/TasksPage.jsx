@@ -9,10 +9,11 @@ const TasksPage = () => {
     getTasks()
   }, [])
 
-  if (tasks.length === 0) return <h1>No tasks</h1>
+  if (tasks.length === 0)
+    return <h2 className='text-2xl font-bold'>No tasks</h2>
 
   return (
-    <div>
+    <div className='grid md:grid-cols-3 sm:grid-cols-2 gap-1'>
       {tasks.map(task => (
         <TaskCard key={task._id} {...task} />
       ))}

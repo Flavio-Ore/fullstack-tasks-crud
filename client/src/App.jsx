@@ -17,17 +17,19 @@ const App = () => {
         <BrowserRouter>
           <main className='container mx-auto px-10'>
             <NavBar />
-            <Routes>
-              <Route path='/' element={<HomePage />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/register' element={<RegisterPage />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path='/tasks' element={<TasksPage />} />
-                <Route path='/add-task' element={<TaskFormPage />} />
-                <Route path='/tasks/:id' element={<TaskFormPage />} />
-                <Route path='/profile' element={<ProfilePage />} />
-              </Route>
-            </Routes>
+            <div className='flex h-[calc(100vh-100px)] items-center justify-center'>
+              <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/register' element={<RegisterPage />} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path='/tasks' element={<TasksPage />} />
+                  <Route path='/add-task' element={<TaskFormPage />} />
+                  <Route path='/tasks/:id' element={<TaskFormPage />} />
+                  <Route path='/profile' element={<ProfilePage />} />
+                </Route>
+              </Routes>
+            </div>
           </main>
         </BrowserRouter>
       </TaskProvider>

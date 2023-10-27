@@ -1,9 +1,5 @@
 const HomePage = () => {
-  return (
-    <div>
-      <p>Hello, I am a functional component!</p>
-    </div>
-  )
+  return <h2 className='text-2xl font-bold'>HOME 🏠</h2>
 }
 
 export default HomePage
