@@ -26,6 +26,7 @@ const TaskFormPage = () => {
   })
 
   const loadTask = async id => {
+    if (!params.id) return
     const task = await getTask(id)
     if (!task)
       return navigate('/not-found', {

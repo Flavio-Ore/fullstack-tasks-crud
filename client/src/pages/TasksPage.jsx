@@ -4,7 +4,7 @@ import { useTasks } from '../hooks/useTasks'
 
 const TasksPage = () => {
   const { tasks, getTasks } = useTasks()
-
+  console.log('tasks :>> ', tasks)
   useEffect(() => {
     getTasks()
 

@@ -18,7 +18,7 @@ const App = () => {
         <BrowserRouter>
           <main className='container mx-auto px-10'>
             <NavBar />
-            <div className='flex h-[calc(100vh-100px)] items-center justify-center'>
+            <div className='flex h-full items-center justify-center md:h-[calc(100vh-100px)]'>
               <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/login' element={<LoginPage />} />
