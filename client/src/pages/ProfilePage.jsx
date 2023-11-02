@@ -1,13 +1,32 @@
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import Profile from '../components/Profile'
 import { useAuth } from '../hooks/useAuth'
 
 const ProfilePage = () => {
-  const { user } = useAuth()
+  const { user, isAuthenticated, logout } = useAuth()
+
+  useEffect(() => {
+    window.document.title = 'Profile'
+  }, [])
+
   return (
-    <article className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
-      <h2 className='text-2xl font-bold'>Profile</h2>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
-    </article>
+    isAuthenticated &&
+    user && (
+      <div className='bg-zinc-800 flex flex-col items-center p-10 rounded-md w-full'>
+        <Profile {...user} />
+
+        <Link
+          to={'/'}
+          onClick={() => {
+            logout()
+          }}
+          className='text-white hover:text-zinc-500 bg-red-600 py-1 px-4 rounded-sm'
+        >
+          Logout
+        </Link>
+      </div>
+    )
   )
 }
 

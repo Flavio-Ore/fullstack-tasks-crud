@@ -1,5 +1,11 @@
+import { useEffect } from 'react'
+
 const HomePage = () => {
-  return <h2 className='text-2xl font-bold'>HOME 🏠</h2>
+  useEffect(() => {
+    window.document.title = 'Home'
+  }, [])
+
+  return <h2 className='text-4xl font-bold text-center'>HOME 🏠</h2>
 }
 
 export default HomePage

@@ -7,6 +7,7 @@ export const useTasks = () => {
     throw new Error('useTasks must be used within an TaskProvider')
   }
   return {
+    errors: context.errors,
     tasks: context.tasks,
     createTask: context.createTask,
     getTasks: context.getTasks,

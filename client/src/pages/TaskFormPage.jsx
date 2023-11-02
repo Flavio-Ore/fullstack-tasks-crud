@@ -13,7 +13,7 @@ const TaskFormPage = () => {
   const params = useParams()
   const navigate = useNavigate()
 
-  const onSubmit = handleSubmit(async data => {
+  const onSubmit = handleSubmit(data => {
     const formatedData = {
       ...data,
       date: data.date ? dayjs.utc(data.date).format() : dayjs.utc().format()
@@ -26,8 +26,11 @@ const TaskFormPage = () => {
   })
 
   const loadTask = async id => {
-    if (!params.id) return
     const task = await getTask(id)
+    if (!task)
+      return navigate('/not-found', {
+        replace: true
+      })
     console.log('task :>> ', task)
     setValue('title', task.title)
     setValue('description', task.description)
@@ -36,7 +39,7 @@ const TaskFormPage = () => {
 
   useEffect(() => {
     loadTask(params.id)
-    // eslint-disable-next-line
+    window.document.title = params.id ? 'Edit task' : 'Add task'
   }, [])
 
   return (

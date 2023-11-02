@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import { TaskProvider } from './contexts/TasksContext'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
+import NotFoundPage from './pages/NotFoundPage'
 import ProfilePage from './pages/ProfilePage'
 import RegisterPage from './pages/RegisterPage'
 import TaskFormPage from './pages/TaskFormPage'
@@ -27,6 +28,7 @@ const App = () => {
                   <Route path='/add-task' element={<TaskFormPage />} />
                   <Route path='/tasks/:id' element={<TaskFormPage />} />
                   <Route path='/profile' element={<ProfilePage />} />
+                  <Route path='*' element={<NotFoundPage />} />
                 </Route>
               </Routes>
             </div>

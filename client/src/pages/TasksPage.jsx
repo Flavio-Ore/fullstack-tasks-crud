@@ -7,6 +7,8 @@ const TasksPage = () => {
 
   useEffect(() => {
     getTasks()
+
+    window.document.title = 'Tasks'
   }, [])
 
   if (tasks.length === 0)

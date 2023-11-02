@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 const NavBar = () => {
-  const { user, isAuthenticated, logout } = useAuth()
+  const { user, isAuthenticated } = useAuth()
   return (
     <nav className='bg-zinc-700 my-3 flex justify-between py-5 px-10'>
       <Link to='/' className='text-white text-2xl font-bold'>
@@ -33,13 +33,10 @@ const NavBar = () => {
             </li>
             <li>
               <Link
-                to={'/'}
-                onClick={() => {
-                  logout()
-                }}
-                className='text-white hover:text-zinc-500 bg-red-600 py-1 px-4 rounded-sm'
+                to={'/profile'}
+                className='text-white hover:text-zinc-500 bg-emerald-600 py-1 px-4 rounded-sm'
               >
-                Logout
+                Profile
               </Link>
             </li>
           </>

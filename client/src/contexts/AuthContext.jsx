@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [errors, setErrors] = useState([])
   const [loading, setLoading] = useState(true)
-
+  console.log('user :>> ', user)
   const signRequest = async request => {
     try {
       const res = await request

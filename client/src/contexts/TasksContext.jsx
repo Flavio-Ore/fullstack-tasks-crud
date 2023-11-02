@@ -12,6 +12,7 @@ export const TaskContext = createContext()
 // eslint-disable-next-line react/prop-types
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([])
+  const [errors, setErrors] = useState([])
 
   const getTasks = async () => {
     try {
@@ -20,6 +21,7 @@ export const TaskProvider = ({ children }) => {
       console.log('await getTasksRequest():>> ', res)
     } catch (error) {
       console.log('error getTasks :>> ', error)
+      setErrors(error.response.data.errors)
     }
   }
 
@@ -27,9 +29,11 @@ export const TaskProvider = ({ children }) => {
     try {
       const res = await getTaskRequest(id)
       console.log('res getTask :>> ', res)
+
       return res.data
     } catch (error) {
       console.log('error getTask :>> ', error)
+      setErrors(error.response.data.errors)
     }
   }
 
@@ -39,6 +43,7 @@ export const TaskProvider = ({ children }) => {
       console.log('res createTaskRequest :>> ', res)
     } catch (error) {
       console.log('error createTask :>> ', error)
+      setErrors(error.response.data.errors)
     }
   }
 
@@ -52,6 +57,7 @@ export const TaskProvider = ({ children }) => {
       }
     } catch (error) {
       console.log('error deleteTask :>> ', error)
+      setErrors(error.response.data.errors)
     }
   }
   const updateTask = async (id, task) => {
@@ -60,11 +66,13 @@ export const TaskProvider = ({ children }) => {
       console.log('res updateTask :>> ', res)
     } catch (error) {
       console.log('error updateTask :>> ', error)
+      setErrors(error.response.data.errors)
     }
   }
   return (
     <TaskContext.Provider
       value={{
+        errors,
         tasks,
         createTask,
         getTasks,

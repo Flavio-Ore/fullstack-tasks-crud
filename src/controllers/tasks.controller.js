@@ -34,7 +34,7 @@ export const getTask = async (req, res) => {
     if (!task) return res.status(404).json({ errors: ['Task not found'] })
     res.json(task)
   } catch (error) {
-    return res.sendStatus(404).json({ errors: 'Task not found' })
+    return res.status(404).json({ errors: 'Task not found' })
   }
 }
 
@@ -43,10 +43,12 @@ export const updateTask = async (req, res) => {
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
       new: true // to return the new task instead of the old one
     })
+
     if (!task) return res.status(404).json({ erros: ['Task not found'] })
+
     res.json(task)
   } catch (error) {
-    res.sendStatus(404).json({ errors: 'Task not found' })
+    res.status(404).json({ errors: 'Task not found' })
   }
 }
 export const deleteTask = async (req, res) => {
@@ -55,6 +57,6 @@ export const deleteTask = async (req, res) => {
     if (!task) return res.status(404).json({ errors: ['Task not found'] })
     return res.sendStatus(204)
   } catch (error) {
-    res.sendStatus(404).json({ errors: 'Task not found' })
+    res.status(404).json({ errors: 'Task not found' })
   }
 }

@@ -20,6 +20,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) navigate('/tasks')
+    window.document.title = 'Login'
   }, [isAuthenticated])
 
   return (
