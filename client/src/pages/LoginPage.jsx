@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SubmitBtn from '../components/SubmitBtn'
+import SignErrors from '../components/signErrors'
 import { useAuth } from '../hooks/useAuth'
+import { usePathOnChange } from '../hooks/usePathOnChange'
 
 const LoginPage = () => {
   const {
@@ -12,26 +13,16 @@ const LoginPage = () => {
   } = useForm()
 
   const { isAuthenticated, signin, errors: loginErrors } = useAuth()
-  const navigate = useNavigate()
+  usePathOnChange({ isAuthenticated, documentTitle: 'Login' })
   const onSubmit = handleSubmit(async values => {
     signin(values)
     console.log(values)
   })
 
-  useEffect(() => {
-    if (isAuthenticated) navigate('/tasks')
-    window.document.title = 'Login'
-  }, [isAuthenticated])
-
   return (
     <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
       {loginErrors.map(error => (
-        <div
-          key={error}
-          className='bg-red-500 text-white p-4 rounded-md mb-2 text-center'
-        >
-          {error}
-        </div>
+        <SignErrors key={error} error={error} />
       ))}
       <h2 className='text-2xl font-bold'>LOGIN</h2>
       <form onSubmit={onSubmit}>

@@ -3,40 +3,43 @@ import { useAuth } from '../hooks/useAuth'
 
 const NavBar = () => {
   const { user, isAuthenticated } = useAuth()
+
   return (
-    <nav className='bg-zinc-700 my-3 flex justify-between py-5 px-10'>
+    <nav className='bg-zinc-700 my-3 flex items-center justify-between py-5 px-10'>
       <Link to='/' className='text-white text-2xl font-bold'>
-        <h1 className='text-2xl font-bold'>Task Manager</h1>
+        <h1 className='text-4xl font-bold'>Task Manager</h1>
       </Link>
-      <ul className='flex gap-x-2'>
+      {isAuthenticated && (
+        <p>
+          Welcome{' '}
+          <span className='text-stone-200 font-bold'>{user.username}</span>
+        </p>
+      )}
+      <ul className='flex flex-col sm:flex-row items-center sm:gap-x-2 gap-y-2'>
         {isAuthenticated ? (
           <>
             <li>
-              Welcome master{' '}
-              <span className='text-stone-200 font-bold'>{user.username}</span>
-            </li>
-            <li>
               <Link
-                to='/add-task'
-                className='text-white hover:text-zinc-500 bg-cyan-600 py-1 px-4 rounded-sm'
+                to={'/profile'}
+                className='block text-white hover:text-zinc-500 bg-emerald-600 py-1 px-4 rounded-sm'
               >
-                Add Task
+                Profile
               </Link>
             </li>
             <li>
               <Link
                 to='/tasks'
-                className='text-white hover:text-zinc-500 bg-lime-600 py-1 px-4 rounded-sm'
+                className='block text-white hover:text-zinc-500 bg-lime-600 py-1 px-4 rounded-sm'
               >
                 Tasks
               </Link>
             </li>
             <li>
               <Link
-                to={'/profile'}
-                className='text-white hover:text-zinc-500 bg-emerald-600 py-1 px-4 rounded-sm'
+                to='/add-task'
+                className='block text-white hover:text-zinc-500 bg-cyan-600 py-1 px-4 rounded-sm'
               >
-                Profile
+                Add Task
               </Link>
             </li>
           </>
@@ -45,7 +48,7 @@ const NavBar = () => {
             <li>
               <Link
                 to='/login'
-                className='text-white hover:text-zinc-500 bg-cyan-700 py-1 px-4 rounded-sm'
+                className='block text-white hover:text-zinc-500 bg-cyan-700 py-1 px-4 rounded-sm'
               >
                 Login
               </Link>
@@ -53,7 +56,7 @@ const NavBar = () => {
             <li>
               <Link
                 to='/register'
-                className='text-white hover:text-zinc-500 bg-cyan-700 py-1 px-4 rounded-sm'
+                className='block text-white hover:text-zinc-500 bg-cyan-700 py-1 px-4 rounded-sm'
               >
                 Register
               </Link>

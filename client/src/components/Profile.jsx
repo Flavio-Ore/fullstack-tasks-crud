@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const Profile = ({ username, email, id, createdAt }) => {
   return (
-    <article className=' bg-zinc-900 p-6 flex flex-col items-center justify-evenly gap-y-4'>
+    <article className=' bg-zinc-900 p-6 flex flex-col items-center justify-evenly gap-y-4 md:w-96 w-full'>
       <h2 className='text-2xl font-bold'>PROFILE</h2>
       <h3 className='text-4xl font-bold text-center bg-zinc-800 rounded-full p-3'>
         👤

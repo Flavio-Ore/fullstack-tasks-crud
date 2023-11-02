@@ -21,7 +21,7 @@ const ProfilePage = () => {
           onClick={() => {
             logout()
           }}
-          className='text-white hover:text-zinc-500 bg-red-600 py-1 px-4 rounded-sm'
+          className='text-white hover:text-zinc-500 bg-red-600 py-1 px-4 rounded-sm mt-4'
         >
           Logout
         </Link>

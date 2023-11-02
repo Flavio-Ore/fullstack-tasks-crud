@@ -8,3 +8,8 @@ The proposal of this project is to create a basic REST API Backend application *
 
 [![Fazt web video](https://i.ytimg.com/vi/NmkY4JgS21A/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDf13vLS_ZgP9S3vFzuavYyMoDcwA)](https://www.youtube.com/watch?v=NmkY4JgS21A)
 > author: [Fazt Code](https://www.youtube.com/channel/UCMn28O1sQGochG94HdlthbA)
+
+## Things to improve about the project 🚀
+
+- Use a testing framework.
+- Deploy the application.
